@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="icon" href="./favicon.png">
+    <link rel="icon" href="./favicon.png" />
     <title>Meeting Minutes</title>
-    <meta name="description" content="No description yet.">
+    <meta name="description" content="No description yet." />
   </head>
   <body>
     <header>
@@ -246,7 +246,7 @@
           <img
             src="./door-diagram.png"
             alt="A diagram detailing the specific dimensions of the current doorway, the proposed expanded doorway, and the rod."
-         >
+          />
           <figcaption>
             <p>Fig. 1.1. The door expansion project proposal.</p>
           </figcaption>
@@ -255,7 +255,7 @@
 
       <section>
         <h2>Recordings</h2>
-        <audio src="./meeting.m4a" controls></audio><br>
+        <audio src="./meeting.m4a" controls></audio><br />
         <video src="./meeting.mp4" controls></video>
       </section>
     </main>
@@ -267,6 +267,7 @@
           <label>
             Newsletter*:
             <select name="newsletter" required>
+              <option value="" selected disabled>--- SELECT ONE ---</option>
               <option value="donations">Donation reminders</option>
               <option value="minutes">Meeting minutes</option>
               <option value="ads">Advertisements</option>
@@ -275,7 +276,7 @@
         </p>
         <p>
           <label>
-            Last name: <input type="text" name="surname" list="names">
+            Last name: <input type="text" name="surname" list="names" />
           </label>
         </p>
         <datalist id="names">
@@ -286,31 +287,31 @@
           <option value="Richard McHamilton XVII"></option>
         </datalist>
         <p>
-          <label>Email*: <input name="email" type="email" required></label>
+          <label>Email*: <input name="email" type="email" required /></label>
         </p>
         <fieldset>
           <legend>Gender</legend>
           <p>
             <label>
-              <input type="radio" name="gender" value="binary"> Binary
+              <input type="radio" name="gender" value="binary" /> Binary
             </label>
           </p>
           <p>
             <label>
-              <input type="radio" name="gender" value="other"> Other
+              <input type="radio" name="gender" value="other" /> Other
             </label>
           </p>
         </fieldset>
         <p>
           <label>
             When can you make your first payment?
-            <input name="first-payment" type="date">
+            <input name="first-payment" type="date" />
           </label>
         </p>
         <textarea name="comments" placeholder="Comments"></textarea>
         <p>
           <label>
-            <input name="trade-acknowledgement" type="checkbox" required> I
+            <input name="trade-acknowledgement" type="checkbox" required /> I
             have acknowledge that, per Ovine Trade Agreement B-260, any
             transaction made with sheep may be subject to additional fees.
           </label>
@@ -318,7 +319,7 @@
         <button>Sign up</button>
       </form>
 
-      <hr>
+      <hr />
 
       <ul>
         <li>
