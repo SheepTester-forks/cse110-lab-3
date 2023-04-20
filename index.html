@@ -8,6 +8,11 @@
   <link rel="icon" href="./favicon.png">
   <title>Meeting Minutes</title>
   <meta name="description" content="No description yet.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -257,10 +262,10 @@
   <footer>
     <form action="https://www.youtube.com/watch?v=dQw4w9WgXcQ" method="POST">
       <h2>Sign up for our newsletter</h2>
-      <p>*Required</p>
+      <p class="required">*Required</p>
       <p>
         <label>
-          Newsletter*:
+          <span>Newsletter<span class="required">*</span></span>
           <select name="newsletter" required>
             <option value="" selected disabled>--- SELECT ONE ---</option>
             <option value="donations">Donation reminders</option>
@@ -271,7 +276,7 @@
       </p>
       <p>
         <label>
-          Last name: <input type="text" name="surname" list="names">
+          <span>Last name</span> <input type="text" name="surname" list="names" placeholder="Smith">
         </label>
       </p>
       <datalist id="names">
@@ -282,17 +287,18 @@
         <option value="Richard McHamilton XVII"></option>
       </datalist>
       <p>
-        <label>Email*: <input name="email" type="email" required></label>
+        <label><span>Email<span class="required">*</span></span> <input name="email" type="email"
+            placeholder="yourmom@example.com" required></label>
       </p>
       <fieldset>
         <legend>Gender</legend>
         <p>
-          <label>
+          <label class="check-label">
             <input type="radio" name="gender" value="binary"> Binary
           </label>
         </p>
         <p>
-          <label>
+          <label class="check-label">
             <input type="radio" name="gender" value="other"> Other
           </label>
         </p>
@@ -303,9 +309,10 @@
           <input name="first-payment" type="date">
         </label>
       </p>
-      <textarea name="comments" placeholder="Comments"></textarea>
+      <label><span>Comments</span> <textarea name="comments"
+          placeholder="Specify how often you would like to receive packages."></textarea></label>
       <p>
-        <label>
+        <label class="check-label">
           <input name="trade-acknowledgement" type="checkbox" required> I
           have acknowledge that, per Ovine Trade Agreement B-260, any
           transaction made with sheep may be subject to additional fees.
