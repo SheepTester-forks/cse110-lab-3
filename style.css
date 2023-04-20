@@ -1,3 +1,4 @@
+/* Global styles */
 :root {
   --max-width: 1000px;
   --updates-height: 40px;
@@ -50,15 +51,20 @@ button:not(:disabled) {
   opacity: 0.3;
 }
 
+/* Header styles */
 header {
   position: sticky;
   /* https://stackoverflow.com/a/50887788 */
   top: calc(-1 * var(--updates-height));
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    'updates updates updates'
+    'navbar navbar navbar';
   z-index: 10;
   align-items: stretch;
 }
+/* Emergency updates */
 details {
   background-color: gold;
   position: relative;
@@ -72,7 +78,7 @@ summary {
   height: var(--updates-height);
   vertical-align: middle;
 }
-details p {
+details > p {
   margin: 0;
   padding: 10px 15px;
   padding-top: 0;
@@ -82,8 +88,9 @@ details p {
   background-color: yellow;
   z-index: 2;
 }
+/* Navbar in header */
 nav {
-  grid-column: 1 / -1;
+  grid-area: navbar;
   position: sticky;
   top: 0;
   background-color: white;
@@ -97,7 +104,7 @@ nav ul {
   padding: 0 5px;
 }
 nav a {
-  display: block;
+  display: inline-block;
   padding: 10px 15px;
   transition: background-color 0.2s;
 }
@@ -108,13 +115,14 @@ nav a:hover {
 nav a:active {
   background-color: rgba(0, 0, 0, 0.1);
 }
-nav a[href='./'] {
+nav #current {
   font-weight: bold;
 }
-nav a[href='./']:not(:active):hover {
+nav #current:not(:active):hover {
   background-color: transparent;
 }
 
+/* Main content styles */
 main {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -159,20 +167,24 @@ figure {
   margin: 0;
 }
 
+/* Footer styles */
 footer {
   background-color: #212121;
   color: white;
   color-scheme: dark;
 }
+/* Footer links */
 footer ul {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 25px;
   margin: 0;
   list-style: none;
   color: rgba(255, 255, 255, 0.7);
   gap: 20px;
-  padding-bottom: 25px;
 }
 footer hr {
   border: none;
@@ -180,11 +192,12 @@ footer hr {
   max-width: 100px;
   margin: auto;
 }
+/* Sign-up form */
 form {
   padding: 20px;
   max-width: var(--max-width);
   margin: 0 auto;
-  font-size: 14px;
+  font-size: 10.5pt;
 }
 form h2 {
   font-size: 24px;
@@ -207,7 +220,9 @@ form input,
 form select,
 form textarea,
 .indicator {
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
 }
 form input,
@@ -235,11 +250,13 @@ fieldset {
 legend {
   padding: 0;
 }
-.check-label {
+/* Custom checkbox/radio style */
+label.check-label {
   flex-direction: row;
   cursor: pointer;
 }
-.check-label input {
+input[type='checkbox'],
+input[type='radio'] {
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
@@ -251,6 +268,9 @@ legend {
   height: 16px;
   border-radius: 2px;
   margin-top: 2px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
   flex: none;
   border-color: rgba(255, 255, 255, 0.3);
   display: flex;
@@ -299,4 +319,12 @@ button:hover {
 }
 button:active {
   --height: 2px;
+}
+
+/* Center headings on mobile */
+@media (max-width: 600px) {
+  h1,
+  form h2 {
+    text-align: center;
+  }
 }
