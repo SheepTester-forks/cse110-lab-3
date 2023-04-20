@@ -1,5 +1,11 @@
 :root {
   --max-width: 1000px;
+  --updates-height: 40px;
+}
+@media (max-width: 580px) {
+  :root {
+    --updates-height: 64px;
+  }
 }
 * {
   box-sizing: border-box;
@@ -24,7 +30,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
-a:not([href='./']):hover {
+a:hover {
   text-decoration: underline;
 }
 button,
@@ -46,10 +52,12 @@ button:not(:disabled) {
 
 header {
   position: sticky;
-  top: -40px;
+  /* https://stackoverflow.com/a/50887788 */
+  top: calc(-1 * var(--updates-height));
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   z-index: 10;
+  align-items: stretch;
 }
 details {
   background-color: gold;
@@ -61,7 +69,7 @@ details[open] {
 summary {
   cursor: pointer;
   padding: 8px 15px;
-  height: 40px;
+  height: var(--updates-height);
   vertical-align: middle;
 }
 details p {
@@ -86,11 +94,25 @@ nav ul {
   display: flex;
   margin: 0 auto;
   list-style: none;
-  padding: 10px 20px;
-  gap: 20px;
+  padding: 0 5px;
 }
-a[href='./'] {
+nav a {
+  display: block;
+  padding: 10px 15px;
+  transition: background-color 0.2s;
+}
+nav a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+nav a:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+nav a[href='./'] {
   font-weight: bold;
+}
+nav a[href='./']:not(:active):hover {
+  background-color: transparent;
 }
 
 main {
@@ -122,6 +144,20 @@ h1 {
   font-weight: bold;
   color: hsl(212, 70%, 51%);
 }
+img,
+video {
+  max-width: 100%;
+}
+main a {
+  color: royalblue;
+  font-weight: bold;
+}
+main a:visited {
+  color: darkviolet;
+}
+figure {
+  margin: 0;
+}
 
 footer {
   background-color: #212121;
@@ -136,6 +172,7 @@ footer ul {
   list-style: none;
   color: rgba(255, 255, 255, 0.7);
   gap: 20px;
+  padding-bottom: 25px;
 }
 footer hr {
   border: none;
@@ -166,21 +203,23 @@ form label {
   flex-direction: column;
   gap: 10px;
 }
-.check-label {
-  flex-direction: row;
-  cursor: pointer;
-}
 form input,
 form select,
-form textarea {
+form textarea,
+.indicator {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 5px;
-  padding: 10px;
 }
 form input,
 form select {
   padding: 0 10px;
   height: 30px;
+}
+form textarea {
+  padding: 10px;
+  resize: vertical;
+  min-height: 50px;
+  height: 50px;
 }
 form input:focus,
 form select:focus,
@@ -192,4 +231,72 @@ fieldset {
   border: none;
   padding: 0;
   margin: 0;
+}
+legend {
+  padding: 0;
+}
+.check-label {
+  flex-direction: row;
+  cursor: pointer;
+}
+.check-label input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  border: none;
+  padding: 0;
+}
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-top: 2px;
+  flex: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  position: relative;
+}
+.indicator.radio,
+.indicator.radio::after {
+  border-radius: 50%;
+}
+:checked + .indicator.radio::after {
+  content: '';
+  background-color: white;
+  display: block;
+  flex: auto;
+  margin: 3px;
+}
+:checked + .indicator.checkbox::after {
+  content: '';
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  position: absolute;
+  width: 6px;
+  height: 14px;
+  left: 6px;
+  top: -6px;
+  transform: rotate(45deg);
+}
+:focus ~ .indicator {
+  border-color: white;
+}
+button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 15px;
+  background-color: gold;
+  color: black;
+  border-radius: 5px;
+  --height: 5px;
+  box-shadow: inset 0 calc(-1 * var(--height)) 0 rgba(0, 0, 0, 0.15);
+  padding-bottom: var(--height);
+  transition: box-shadow 0.2s, padding-bottom 0.2s;
+}
+button:hover {
+  --height: 7px;
+}
+button:active {
+  --height: 2px;
 }
