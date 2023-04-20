@@ -2,10 +2,12 @@
 :root {
   --max-width: 1000px;
   --updates-height: 40px;
+  --updates-height: calc(1lh + 20px);
 }
 @media (max-width: 580px) {
   :root {
     --updates-height: 64px;
+    --updates-height: calc(2lh + 20px);
   }
 }
 * {
@@ -129,7 +131,7 @@ main {
   padding: 20px;
 }
 video {
-  border-radius: 15px;
+  border-radius: 0.5cm;
 }
 ::marker {
   color: rgba(0, 0, 0, 0.5);
@@ -196,6 +198,7 @@ footer hr {
 form {
   padding: 20px;
   max-width: var(--max-width);
+  min-width: 0;
   margin: 0 auto;
   font-size: 10.5pt;
 }
@@ -305,7 +308,7 @@ button {
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 0 15px;
+  padding: 0 2ch;
   background-color: gold;
   color: black;
   border-radius: 5px;
